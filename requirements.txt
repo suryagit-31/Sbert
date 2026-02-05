@@ -1,0 +1,11 @@
+faiss-cpu
+numpy
+pandas
+sentence-transformers
+lime
+torch
+tqdm
+pypdf
+transformers
+scikit-learn
+matplotlib
