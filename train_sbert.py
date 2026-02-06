@@ -18,10 +18,10 @@ WARMUP_STEPS_RATIO = 0.1
 MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
 SAMPLES_PER_CLASS = 100  # Increased from 50 for better robustness
 
-dataset_path = r"d:\APPLY\plant village\PlantVillage_train_prompts - Copy.json"
-model_save_path = r"d:\APPLY\plant village\finetuned_sbert_model"
-faiss_index_path = r"d:\APPLY\plant village\disease_faiss.index"
-disease_mapping_path = r"d:\APPLY\plant village\disease_mapping.json"
+dataset_path = r"PlantVillage_train_prompts - Copy.json"
+model_save_path = r"finetuned_sbert_model"
+faiss_index_path = r"disease_faiss.index"
+disease_mapping_path = r"disease_mapping.json"
 
 # ==============================
 # LOAD DATASET
@@ -40,9 +40,15 @@ def prepare_data(data):
     train_data = {}
     test_data = {}
     
-    print("Splitting data 70/30...")
+    # Define selected crops - 7 major crops
+    SELECTED_CROPS = ['tomato', 'apple', 'corn', 'maize', 'potato', 'grape', 'soybean', 'orange']
+    
+    print("Splitting data 70/30 for selected crops...")
     for category, prompts in data.items():
-        # No filtering - use ALL categories
+        # Filter: only include selected crops
+        if not any(crop in category.lower() for crop in SELECTED_CROPS):
+            continue
+            
         prompts = [p.strip() for p in prompts if len(p.strip()) > 0]
         
         # Remove duplicates within category

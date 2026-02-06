@@ -1,0 +1,11 @@
+{
+  "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+  "epochs": 4,
+  "batch_size": 32,
+  "learning_rate": 5e-05,
+  "samples_per_class": 100,
+  "total_training_pairs": 2700,
+  "total_validation_pairs": 810,
+  "indexed_sentences": 433,
+  "num_categories": 27
+}

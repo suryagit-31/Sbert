@@ -28,9 +28,21 @@ ENV/
 
 # Project Specific Large/Generated Files
 finetuned_sbert_model/
+finetuned_sbert_model_v2/
 disease_faiss.index
+disease_faiss_v2.index
 pdf_content.txt
 *.pdf
+
+# Training outputs and checkpoints
+checkpoints/
+*.log
+
+# Temporary files
+nul
+
+# Resolved/temporary documentation
+*.resolved
 
 # IDE
 .vscode/
